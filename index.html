@@ -1,13 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wildlife in Australia</title>
+  <meta charset="utf-8" />
+  <title>Wildlife in Australia</title>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <style>body{font-family:system-ui;margin:16px}</style>
 </head>
 <body>
-    <h1>
-        Animals
-    </h1>
+  <h1>Species richness by state</h1>
+  <div id="map"></div>
+  <script>
+  const spec = {
+    $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+    width: 800, height: 520,
+    projection: {type: "equalEarth"},
+
+    data: {
+      url: "https://raw.githubusercontent.com/frzatla/3179-Visualisation2/main/aus-states.json",   
+      format: {type: "topojson", feature: "STE_2016_AUST"} 
+    },
+
+    transform: [
+      {
+        lookup: "properties.STE_NAME16",           
+        from: {
+          data: {url: "https://raw.githubusercontent.com/frzatla/3179-Visualisation2/main/wildlife_species_counts_by_state.csv"},
+          key: "state",                             
+          fields: ["species_count"]                 
+        }
+      },
+      {calculate: "isValid(datum.species_count) ? datum.species_count : 0", as: "species_count"}
+    ],
+
+    mark: {type: "geoshape", stroke: "white", strokeWidth: 1},
+
+    encoding: {
+      color: {
+        field: "species_count", type: "quantitative",
+        title: "Distinct animal species", scale: {scheme: "greens"}
+      },
+      tooltip: [
+        {field: "properties.STE_NAME16", title: "State"},
+        {field: "species_count", type: "quantitative", title: "Species", format: ","}
+      ]
+    },
+    config: {view: {stroke: null}}
+  };
+
+  vegaEmbed("#map", spec, {actions:false});
+  </script>
 </body>
 </html>
