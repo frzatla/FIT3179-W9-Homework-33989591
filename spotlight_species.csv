@@ -1,0 +1,13 @@
+common_name,scientific_name,group,status,inat_obs_au,record_count,states_present
+Koala,Phascolarctos cinereus,Mammals,Endangered,32735,285091,8
+Tasmanian Devil,Sarcophilus harrisii,Mammals,Endangered,962,36678,7
+Northern Quoll,Dasyurus hallucatus,Mammals,Endangered,167,13536,5
+Numbat,Myrmecobius fasciatus,Mammals,Endangered,248,1278,6
+Greater Glider,Petauroides volans,Mammals,Endangered,1438,39690,7
+Leadbeater's Possum,Gymnobelideus leadbeateri,Mammals,Critically Endangered,46,2697,1
+Bridled Nail-tail Wallaby,Onychogalea fraenata,Mammals,Endangered,38,64490,3
+Brush-tailed Rock-wallaby,Petrogale penicillata,Mammals,Vulnerable,396,6789,7
+Orange-bellied Parrot,Neophema chrysogaster,Birds,Critically Endangered,88,2763,4
+Regent Honeyeater,Anthochaera phrygia,Birds,Critically Endangered,146,10110,6
+Swift Parrot,Lathamus discolor,Birds,Critically Endangered,575,24310,8
+Mary River Turtle,Elusor macrurus,Reptiles,Endangered,17,195,2
